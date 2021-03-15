@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Registrace k očkování</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+  </head>
+  <body onload="poNacteni()">
+    <center><h1>Registrace k očkování</h1></center>
+
+    <div id="div_seznam">
+      <h2>Žadatel</h2>
+     
+     <table>
+        <thead>
+          <th>Jméno</th>
+          <th>Příjmení</th>
+          <th>Rodné číslo</th>
+          <th>Očkovací místo</th>
+          <th></th>
+        </thead>
+        <tbody id="tbody_seznam_zadatelu"></tbody>
+      </table>
+
+       <button onclick="pridejZadatele()"><span class="glyphicon glyphicon-plus-sign"></span> Přidat</button>
+    </div>
+   
+    <div id="div_editace">
+      <h2>Žadatel</h2>
+
+      <center><img id="fotka" src="avatarr.png" height="100"><br>
+      <input type="file" id="file_fotka" onchange="ulozFotku()"></center>
+      <br><br>
+
+    <table>
+      <tr><td>Jméno:</td> <td><input type="text" id="jmeno"></td></tr>
+      <tr><td>Příjmení:</td> <td><input type="text" id="prijmeni"></td></tr>
+      <tr><td>Rodné číslo:</td> <td><input id="rodne_c" placeholder="000000"> / <input id="ctyrcisli" placeholder="0000"></td></tr>
+      <tr><td>Očkovací místo:</td> <td> 
+        <select id="o_misto">
+          <option value="Praha">Praha</option>
+          <option value="Ml.Boleslav">Ml. Boleslav</option>
+          <option value="Liberec">Liberec</option>
+        </select></td></tr>
+    </table>
+      <input type="button" value="Uložit" onclick="ulozZadatele()">
+      <input type="button" value="Storno" onclick="ukazOblast('div_seznam')"><br>
+    </div>
+
+  </body>
+</html>
