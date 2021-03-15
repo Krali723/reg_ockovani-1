@@ -9,7 +9,7 @@ async function nactiSeznamZadatelu() {
   let data = await response.json();
   let s = "";
   for (let item of data.items) {
-    s += `<tr><td>${item.obj.jmeno}</td> <td>${item.obj.prijmeni}</td> <td>${item.obj.rodne_c}${item.obj.ctyrcisli}</td><td>${item.obj.o_misto}</td> <td><button value="Upravit" onclick="upravZadatele(${item.id})"><span class="		glyphicon glyphicon-edit
+    s += `<tr><td>${item.obj.jmeno}</td> <td>${item.obj.prijmeni}</td> <td>${item.obj.rodne_c}/${item.obj.ctyrcisli}</td><td>${item.obj.o_misto}</td> <td><button value="Upravit" onclick="upravZadatele(${item.id})"><span class="		glyphicon glyphicon-edit
     "></span><button value="Odstranit" onclick="odstranZadatele(${item.id})"><span class="	glyphicon glyphicon-remove-circle"></span></button></td></tr>`; 
       }
       
@@ -23,6 +23,7 @@ async function ulozZadatele() {
   let j = document.getElementById("jmeno").value;
   let p = document.getElementById("prijmeni").value;
   let c = document.getElementById("rodne_c").value;
+  let t = document.getElementById("ctyrcisli").value;
   let m = document.getElementById("o_misto").value;
 
   let url = URL_CRUD + "create";
@@ -33,6 +34,7 @@ async function ulozZadatele() {
   body.obj.prijmeni = p;
   body.obj.rodne_c = c;
   body.obj.o_misto = m;
+  body.obj.ctyrcisli = t;
   body.obj.fotka = fotkaUrl;
   if (idEditace) { //=false pro undefined, =true pro jakoukoliv nastavenou hodnotu
     url = URL_CRUD + "update";
@@ -51,6 +53,7 @@ function pridejZadatele() {
   document.getElementById("prijmeni").value = "";
   document.getElementById("rodne_c").value = "";
   document.getElementById("o_misto").value = "";
+  document.getElementById("ctyrcisli").value = "";
   document.getElementById("fotka").src = "avatarr.png";
 
   ukazOblast("div_editace");
@@ -69,6 +72,7 @@ async function upravZadatele(id) {
   document.getElementById("prijmeni").value = item.obj.prijmeni;
   document.getElementById("rodne_c").value = item.obj.rodne_c;
   document.getElementById("o_misto").value = item.obj.o_misto;
+  document.getElementById("ctyrcisli").value = item.obj.ctyrcisli;
   document.getElementById("fotka").src = item.obj.fotka;
 
   ukazOblast("div_editace");
